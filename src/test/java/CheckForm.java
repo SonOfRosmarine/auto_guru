@@ -7,8 +7,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CheckForm {
 
@@ -24,6 +23,8 @@ public class CheckForm {
     void succedfulTest(){
 
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("[id = firstName]").setValue("Eugen");
         $("[id = lastName]").setValue("Chazam");
         $("[id = userEmail]").setValue("Eugen@Chazam.com");
@@ -35,8 +36,7 @@ public class CheckForm {
         $(".react-datepicker__month-container").$(byText("18")).click();
         $("[id = subjectsInput]").setValue("E").pressEnter();
         $(By.cssSelector("label[for='hobbies-checkbox-1']")).click();
-        File fileToUpload = new File ("C:/Users/roman/Desktop/picture/5.jpg");
-        $("#uploadPicture").uploadFile(fileToUpload);
+        $("#uploadPicture").uploadFromClasspath("pictures/5.jpg");
         $("[id = currentAddress]").setValue("Mosscowww");
         $("[id = state]").click();
         $("[id = stateCity-wrapper]").$(byText("Haryana")).click();
