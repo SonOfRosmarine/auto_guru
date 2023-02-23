@@ -11,19 +11,19 @@ import  static com.codeborne.selenide.Selenide.open;
 
 public class SerchPages {
 
-    public static  String checkText = """
-            @ExtendWith({SoftAssertsExtension })
-            class  {
-              @Test
-              void test() {
-                Configuration.assertionMode = SOFT;
-                open ("page.html");
+    public static String checkText = """
+@ExtendWith({SoftAssertsExtension.class})
+class Tests {
+@Test
+void test() {
+Configuration.assertionMode = SOFT;
+open("page.html");
 
-                $("#first").should (visible).click ();
-                $("#second").should (visible).click();
-              }
-            }
-            """;
+$("#first").should(visible).click();
+$("#second").should(visible).click();
+}
+}
+""";
 
 
     @BeforeAll
