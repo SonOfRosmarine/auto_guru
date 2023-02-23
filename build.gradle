@@ -1,6 +1,9 @@
 plugins {
     id 'java-library'
 }
+group = 'com.jsd'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -10,6 +13,7 @@ dependencies {
     testImplementation (
             "com.codeborne:selenide:6.11.2",
             "org.junit.jupiter:junit-jupiter:5.9.2")
+            "org.slf4j:slf4j-simple:2.0.6"
 }
 
 tasks.withType(JavaCompile) {
@@ -19,3 +23,5 @@ tasks.withType(JavaCompile) {
 test {
     useJUnitPlatform()
 }
+sourceCompatibility = JavaVersion.VERSION_15
+targetCompatibility = JavaVersion.VERSION_15
