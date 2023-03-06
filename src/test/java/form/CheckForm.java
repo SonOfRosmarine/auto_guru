@@ -1,14 +1,12 @@
 package form;
 
-import form.pages.TestBase;
 import org.junit.jupiter.api.Test;
 
 public class CheckForm extends TestBase {
 
 
     @Test
-
-    public void succedfulTest() {
+    public void successfulTest() {
         String userName = "Valera";
         String lastName = "Staroff";
         String email = "wewe@sdasd.ru";
@@ -21,6 +19,7 @@ public class CheckForm extends TestBase {
 
 
         objectPageCheckForm.openPage()
+                .secretBanner()
                 .setInputFirstName(userName)
                 .setInputLastName(lastName)
                 .setInputEmail(email)
@@ -43,7 +42,6 @@ public class CheckForm extends TestBase {
                 .verifyResult("Hobbies", "Sport")
                 .verifyResult("Address", address)
                 .verifyResult("State and City", "Haryana" + " " + "Karnal");
-
     }
 
 

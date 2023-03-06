@@ -12,17 +12,19 @@ public class ObjectPageCheckForm {
     Component component = new Component();
     ModalWindowResult modalWindowResult = new ModalWindowResult();
     private SelenideElement
-            inputFirstName = $("[id = firstName]"),
-            inputLastName = $("[id = lastName]"),
-            inputEmail = $("[id = userEmail]"),
-
-    inputNumber = $("[id = userNumber]"),
-            inputSubject = $("[id = subjectsInput]"),
-            inputAddress = $("[id = currentAddress]");
+            inputFirstName = $("#firstName"),
+            inputLastName = $("#lastName"),
+            inputEmail = $("#userEmail"),
+            inputNumber = $("#userNumber"),
+            inputSubject = $("#subjectsInput"),
+            inputAddress = $("#currentAddress");
 
     public ObjectPageCheckForm openPage() {
-
         open("/automation-practice-form");
+        return this;
+    }
+
+    public ObjectPageCheckForm secretBanner() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
@@ -54,7 +56,7 @@ public class ObjectPageCheckForm {
     }
 
     public ObjectPageCheckForm setBirth(String month, String years, String day) {
-        $("[id = dateOfBirthInput]").click();
+        $("#dateOfBirthInput").click();
         component.setData(month, years, day);
         return this;
     }
@@ -80,15 +82,15 @@ public class ObjectPageCheckForm {
     }
 
     public ObjectPageCheckForm setState() {
-        $("[id = state]").click();
-        $("[id = stateCity-wrapper]").$(byText("Haryana")).click();
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("Haryana")).click();
         return this;
     }
 
     public ObjectPageCheckForm setCity() {
-        $("[id = city]").click();
-        $("[id = stateCity-wrapper]").$(byText("Karnal")).click();
-        $("[id = submit]").click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Karnal")).click();
+        $("#submit").click();
         return this;
     }
 
