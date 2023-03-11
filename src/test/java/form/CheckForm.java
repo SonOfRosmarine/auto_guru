@@ -1,6 +1,6 @@
 package form;
 
-import form.pages.generate.GenerateRandomDate;
+import form.generate.GenerateRandomDate;
 import org.junit.jupiter.api.Test;
 
 public class CheckForm extends TestBase {
@@ -20,7 +20,7 @@ public class CheckForm extends TestBase {
         String hobbies = GenerateRandomDate.getRandomHobbiess();
         String address = GenerateRandomDate.getRandomAddress();
         String state = GenerateRandomDate.getRandomState();
-        String city = GenerateRandomDate.getRandomCity();
+        String city = GenerateRandomDate.getRandomCity(state);
 
         objectPageCheckForm.openPage()
                 .secretBanner()

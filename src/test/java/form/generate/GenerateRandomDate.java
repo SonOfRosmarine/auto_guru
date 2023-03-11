@@ -1,4 +1,4 @@
-package form.pages.generate;
+package form.generate;
 
 import com.github.javafaker.Faker;
 
@@ -6,9 +6,6 @@ import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GenerateRandomDate {
-
-    Faker faker = new Faker(new Locale("ru"));
-
 
     public static String getRandomName() {
         return new Faker(new Locale("ru")).name().firstName();
@@ -74,9 +71,9 @@ public class GenerateRandomDate {
         int index = getRandomInt(0, states.length - 1);
         return states[index];
     }
-    public static String getRandomCity(){
+    public static String getRandomCity(String state){
         String[]city;
-        String resalt = GenerateRandomDate.getRandomState();
+        String resalt = state;
         String [] cityNCR = {"Delhi","Gurgaon","Noida"};
         String [] cityUttar = {"Agra","Lucknow","Merrut"};
         String [] cityHaryana = {"Karnal","Panipat"};
