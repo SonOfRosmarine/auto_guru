@@ -1,5 +1,6 @@
 package form;
 
+import form.pages.generate.GenerateRandomDate;
 import org.junit.jupiter.api.Test;
 
 public class CheckForm extends TestBase {
@@ -7,41 +8,47 @@ public class CheckForm extends TestBase {
 
     @Test
     public void successfulTest() {
-        String userName = "Valera";
-        String lastName = "Staroff";
-        String email = "wewe@sdasd.ru";
-        String number = "7111256545";
-        String day = "22";
-        String month = "January";
-        String years = "1989";
-        String subjects = "E";
-        String address = "Minsk";
-
+        String userName = GenerateRandomDate.getRandomName();
+        String lastName = GenerateRandomDate.getRandomLastName();
+        String email = GenerateRandomDate.getEmail();
+        String gender = GenerateRandomDate.getRandomItemFromArray();
+        String number = GenerateRandomDate.getRandomNumber();
+        String day = GenerateRandomDate.getRandomBirthDay();
+        String month = GenerateRandomDate.getRandomBirthMonth();
+        String years = GenerateRandomDate.getRandomBirthYears();
+        String subjects = GenerateRandomDate.getRandomSubjekt();
+        String hobbies = GenerateRandomDate.getRandomHobbiess();
+        String address = GenerateRandomDate.getRandomAddress();
+        String state = GenerateRandomDate.getRandomState();
+        String city = GenerateRandomDate.getRandomCity();
 
         objectPageCheckForm.openPage()
                 .secretBanner()
                 .setInputFirstName(userName)
                 .setInputLastName(lastName)
                 .setInputEmail(email)
-                .setInputGender()
+                .setInputGender(gender)
                 .setInputNumber(number)
-                .setBirth(month, years, day)
+                .setBirthMonth(month)
+                .setBirthYears(years)
+                .setBirthDay(day)
                 .setInputSubject(subjects)
-                .setHobbies()
+                .setHobbies(hobbies)
                 .setUploadPicture()
                 .setAddress(address)
-                .setState()
-                .setCity()
+                .setState(state)
+                .setCity(city)
                 .resultText()
+
                 .verifyResult("Student Name", userName + " " + lastName)
                 .verifyResult("Student Email", email)
-                .verifyResult("Gender", "Male")
+                .verifyResult("Gender", gender)
                 .verifyResult("Mobile", number)
                 .verifyResult("Date of Birth", day + " " + month + "," + years)
                 .verifyResult("Subjects", subjects)
-                .verifyResult("Hobbies", "Sport")
+                .verifyResult("Hobbies", hobbies)
                 .verifyResult("Address", address)
-                .verifyResult("State and City", "Haryana" + " " + "Karnal");
+                .verifyResult("State and City", state + " " + city);
     }
 
 

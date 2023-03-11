@@ -14,9 +14,11 @@ public class ObjectPageCheckForm {
     private SelenideElement
             inputFirstName = $("#firstName"),
             inputLastName = $("#lastName"),
+            input_gender = $("#genterWrapper"),
             inputEmail = $("#userEmail"),
             inputNumber = $("#userNumber"),
             inputSubject = $("#subjectsInput"),
+            inputHobbies = $("#hobbiesWrapper"),
             inputAddress = $("#currentAddress");
 
     public ObjectPageCheckForm openPage() {
@@ -45,8 +47,8 @@ public class ObjectPageCheckForm {
         return this;
     }
 
-    public ObjectPageCheckForm setInputGender() {
-        $(By.cssSelector("label[for='gender-radio-1']")).click();
+    public ObjectPageCheckForm setInputGender(String gender) {
+        input_gender.$(byText(gender)).click();
         return this;
     }
 
@@ -55,9 +57,19 @@ public class ObjectPageCheckForm {
         return this;
     }
 
-    public ObjectPageCheckForm setBirth(String month, String years, String day) {
+    public ObjectPageCheckForm setBirthMonth(String month) {
         $("#dateOfBirthInput").click();
-        component.setData(month, years, day);
+        component.setDataMonth(month);
+        return this;
+    }
+    public ObjectPageCheckForm setBirthYears(String years) {
+        $("#dateOfBirthInput").click();
+        component.setDataYears(years);
+        return this;
+    }
+    public ObjectPageCheckForm setBirthDay(String day) {
+        $("#dateOfBirthInput").click();
+        component.setDataDay(day);
         return this;
     }
 
@@ -66,8 +78,8 @@ public class ObjectPageCheckForm {
         return this;
     }
 
-    public ObjectPageCheckForm setHobbies() {
-        $(By.cssSelector("label[for='hobbies-checkbox-1']")).click();
+    public ObjectPageCheckForm setHobbies(String value) {
+        inputHobbies.$(byText(value)).click();
         return this;
     }
 
@@ -81,15 +93,15 @@ public class ObjectPageCheckForm {
         return this;
     }
 
-    public ObjectPageCheckForm setState() {
+    public ObjectPageCheckForm setState(String value) {
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("Haryana")).click();
+        $("#stateCity-wrapper").$(byText(value)).click();
         return this;
     }
 
-    public ObjectPageCheckForm setCity() {
+    public ObjectPageCheckForm setCity(String value) {
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Karnal")).click();
+        $("#stateCity-wrapper").$(byText(value)).click();
         $("#submit").click();
         return this;
     }
