@@ -21,7 +21,7 @@ public class ParamTest extends TestBase {
     @Tag("FORM")
     @DisplayName("Корректный вывод в модельном окне номера телефона введенного при регистрации")
     @ParameterizedTest
-    void CorrectShowPhoneNumber(String inputPhoneNumber) {
+    void сorrectShowPhoneNumber(String inputPhoneNumber) {
         String userName = GenerateRandomDate.getRandomName();
         String lastName = GenerateRandomDate.getRandomLastName();
         String email = GenerateRandomDate.getEmail();
@@ -52,7 +52,7 @@ public class ParamTest extends TestBase {
     })
     @Tag("FORM")
     @ParameterizedTest(name = "Корректный вывод в модельном окне Имени {0},Фамилии{1} введенного при регистрации")
-    void CorrectShowFirstNameLastName(String inputFirstName, String inputLastName) {
+    void сorrectShowFirstNameLastName(String inputFirstName, String inputLastName) {
 
         String email = GenerateRandomDate.getEmail();
         String gender = GenerateRandomDate.getRandomItemFromArray();
@@ -75,7 +75,7 @@ public class ParamTest extends TestBase {
                 .verifyResult("Student Name", inputFirstName + " " + inputLastName);
     }
 
-    static Stream<Arguments> CorrectShowStateCity() {
+    static Stream<Arguments> сorrectShowStateCity() {
         return Stream.of(
                 Arguments.of(States.NCR, List.of("Delhi Gurgaon Noida")),
                 Arguments.of(States.Uttar_Pradesh, List.of("Agra Lucknow Merrut")),
@@ -87,7 +87,7 @@ public class ParamTest extends TestBase {
     @MethodSource
     @Tag("FORM")
     @ParameterizedTest(name = "Проверка наличия опеределнного списка городов {1} для штата {0}")
-    void CorrectShowStateCity(States state, List<String> cities) {
+    void сorrectShowStateCity(States state, List<String> cities) {
 
 
         objectPageCheckForm.openPage()
