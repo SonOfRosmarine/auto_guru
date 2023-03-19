@@ -1,10 +1,13 @@
 package form.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import form.data.States;
 import form.pages.component.Component;
 import form.pages.component.ModalWindowResult;
-import org.openqa.selenium.By;
 
+import java.util.List;
+
+import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -62,11 +65,13 @@ public class ObjectPageCheckForm {
         component.setDataMonth(month);
         return this;
     }
+
     public ObjectPageCheckForm setBirthYears(String years) {
         $("#dateOfBirthInput").click();
         component.setDataYears(years);
         return this;
     }
+
     public ObjectPageCheckForm setBirthDay(String day) {
         $("#dateOfBirthInput").click();
         component.setDataDay(day);
@@ -99,14 +104,30 @@ public class ObjectPageCheckForm {
         return this;
     }
 
+    public ObjectPageCheckForm setStateParam(States states) {
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText(String.valueOf(states))).click();
+        return this;
+    }
+
     public ObjectPageCheckForm setCity(String value) {
         $("#city").click();
         $("#stateCity-wrapper").$(byText(value)).click();
-        $("#submit").click();
+        return this;
+    }
+
+    public ObjectPageCheckForm getCityParam() {
+        $("#city").click();
+        return this;
+    }
+
+    public ObjectPageCheckForm checkCitiesParam(List<String> cities) {
+        $$(".css-11unzgr").shouldHave(texts(cities));
         return this;
     }
 
     public ObjectPageCheckForm resultText() {
+        $("#submit").click();
         modalWindowResult.checkResult();
         return this;
     }
