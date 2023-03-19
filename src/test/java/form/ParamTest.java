@@ -77,17 +77,17 @@ public class ParamTest extends TestBase {
 
     static Stream<Arguments> сorrectShowStateCity() {
         return Stream.of(
-                Arguments.of(States.NCR, List.of("Delhi Gurgaon Noida")),
-                Arguments.of(States.Uttar_Pradesh, List.of("Agra Lucknow Merrut")),
-                Arguments.of(States.Haryana, List.of("Karnal Panipat")),
-                Arguments.of(States.Rajasthan, List.of("Jaipur Jaiselmer")));
+                Arguments.of("NCR", List.of("Delhi Gurgaon Noida")),
+                Arguments.of( "Uttar Pradesh", List.of("Agra Lucknow Merrut")),
+                Arguments.of("Haryana", List.of("Karnal Panipat")),
+                Arguments.of("Rajasthan", List.of("Jaipur Jaiselmer")));
     }
 
 
     @MethodSource
     @Tag("FORM")
     @ParameterizedTest(name = "Проверка наличия опеределнного списка городов {1} для штата {0}")
-    void сorrectShowStateCity(States state, List<String> cities) {
+    void сorrectShowStateCity(String state, List<String> cities) {
 
 
         objectPageCheckForm.openPage()
