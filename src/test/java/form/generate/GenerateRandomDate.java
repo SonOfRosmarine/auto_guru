@@ -71,27 +71,28 @@ public class GenerateRandomDate {
         int index = getRandomInt(0, states.length - 1);
         return states[index];
     }
-    public static String getRandomCity(String state){
-        String[]city;
-        String resalt = state;
-        String [] cityNCR = {"Delhi","Gurgaon","Noida"};
-        String [] cityUttar = {"Agra","Lucknow","Merrut"};
-        String [] cityHaryana = {"Karnal","Panipat"};
-        String [] cityRajasthan = {"Jaipur","Jaiselmer"};
 
-        if (resalt.equals("NCR")){
-           city = cityNCR;
-           int index = getRandomInt(0, city.length - 1);
-           return city[index];
-        }else if (resalt.equals("Uttar Pradesh")){
+    public static String getRandomCity(String state) {
+        String[] city;
+        String resalt = state;
+        String[] cityNCR = {"Delhi", "Gurgaon", "Noida"};
+        String[] cityUttar = {"Agra", "Lucknow", "Merrut"};
+        String[] cityHaryana = {"Karnal", "Panipat"};
+        String[] cityRajasthan = {"Jaipur", "Jaiselmer"};
+
+        if (resalt.equals("NCR")) {
+            city = cityNCR;
+            int index = getRandomInt(0, city.length - 1);
+            return city[index];
+        } else if (resalt.equals("Uttar Pradesh")) {
             city = cityUttar;
             int index = getRandomInt(0, city.length - 1);
             return city[index];
-        }else if (resalt.equals("Haryana")){
+        } else if (resalt.equals("Haryana")) {
             city = cityHaryana;
             int index = getRandomInt(0, city.length - 1);
             return city[index];
-        }else {
+        } else {
             city = cityRajasthan;
             int index = getRandomInt(0, city.length - 1);
             return city[index];

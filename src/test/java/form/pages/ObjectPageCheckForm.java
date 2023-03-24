@@ -104,7 +104,7 @@ public class ObjectPageCheckForm {
         return this;
     }
 
-    public ObjectPageCheckForm setStateParam(States states) {
+    public ObjectPageCheckForm setStateParam(String states) {
         $("#state").click();
         $("#stateCity-wrapper").$(byText(String.valueOf(states))).click();
         return this;
