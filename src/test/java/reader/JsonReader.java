@@ -9,9 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
-public class JsonReder {
+public class JsonReader {
 
-    private ClassLoader classLoader = JsonReder.class.getClassLoader();
+    private ClassLoader classLoader = JsonReader.class.getClassLoader();
 
 
     @Test
