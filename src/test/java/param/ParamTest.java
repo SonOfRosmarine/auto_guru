@@ -1,14 +1,13 @@
-package form;
+package param;
 
+import form.TestBase;
 import form.data.States;
 import form.generate.GenerateRandomDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -78,7 +77,7 @@ public class ParamTest extends TestBase {
     static Stream<Arguments> сorrectShowStateCity() {
         return Stream.of(
                 Arguments.of("NCR", List.of("Delhi Gurgaon Noida")),
-                Arguments.of( "Uttar Pradesh", List.of("Agra Lucknow Merrut")),
+                Arguments.of("Uttar Pradesh", List.of("Agra Lucknow Merrut")),
                 Arguments.of("Haryana", List.of("Karnal Panipat")),
                 Arguments.of("Rajasthan", List.of("Jaipur Jaiselmer")));
     }
@@ -99,4 +98,32 @@ public class ParamTest extends TestBase {
 
     }
 
+    @Test
+    @ParameterizedTest
+    @EnumSource(value = States.class, names = {"NCR", "Haryana", "Rajasthan"})
+    void testEnumSorce(States state) {
+        String userName = GenerateRandomDate.getRandomName();
+        String lastName = GenerateRandomDate.getRandomLastName();
+        String email = GenerateRandomDate.getEmail();
+        String gender = GenerateRandomDate.getRandomItemFromArray();
+        String number = GenerateRandomDate.getRandomNumber();
+        String day = GenerateRandomDate.getRandomBirthDay();
+        String month = GenerateRandomDate.getRandomBirthMonth();
+        String years = GenerateRandomDate.getRandomBirthYears();
+        objectPageCheckForm.openPage()
+                .secretBanner()
+                .setInputFirstName(userName)
+                .setInputLastName(lastName)
+                .setInputEmail(email)
+                .setInputGender(gender)
+                .setInputNumber(number)
+                .setBirthMonth(month)
+                .setBirthYears(years)
+                .setBirthDay(day)
+                .setState(String.valueOf(state))
+                .resultText()
+                .verifyResult("State", String.valueOf(state));
+
+
+    }
 }
