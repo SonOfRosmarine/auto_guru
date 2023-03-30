@@ -3,6 +3,8 @@ package form;
 import form.generate.GenerateRandomDate;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 public class CheckForm extends TestBase {
 
 
@@ -22,8 +24,9 @@ public class CheckForm extends TestBase {
         String state = GenerateRandomDate.getRandomState();
         String city = GenerateRandomDate.getRandomCity(state);
 
-        objectPageCheckForm.openPage()
-                .secretBanner()
+       step("Открыть страницу",() ->{ objectPageCheckForm.openPage();});
+        step( "Заполнить форму",() ->{
+                objectPageCheckForm .secretBanner()
                 .setInputFirstName(userName)
                 .setInputLastName(lastName)
                 .setInputEmail(email)
@@ -38,9 +41,9 @@ public class CheckForm extends TestBase {
                 .setAddress(address)
                 .setState(state)
                 .setCity(city)
-                .resultText()
+                .resultText();});
 
-                .verifyResult("Student Name", userName + " " + lastName)
+             step("Осуществить проверку",() ->{  objectPageCheckForm .verifyResult("Student Name", userName + " " + lastName)
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
                 .verifyResult("Mobile", number)
@@ -48,7 +51,7 @@ public class CheckForm extends TestBase {
                 .verifyResult("Subjects", subjects)
                 .verifyResult("Hobbies", hobbies)
                 .verifyResult("Address", address)
-                .verifyResult("State and City", state + " " + city);
+                .verifyResult("State and City", state + " " + city);});
     }
 
 
