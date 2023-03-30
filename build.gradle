@@ -3,7 +3,7 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 group = 'com.jsd'
-version = '0.0.1-SNAPSHOT'
+version = '1.0-SNAPSHOT'
 sourceCompatibility = '17'
 
 allure {
@@ -26,7 +26,7 @@ repositories {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.12.2",
+            "com.codeborne:selenide:6.12.3",
             "com.github.javafaker:javafaker:1.0.2",
             "org.junit.jupiter:junit-jupiter:5.9.2",
             "org.slf4j:slf4j-simple:2.0.6",
@@ -45,11 +45,12 @@ tasks.withType(JavaCompile) {
 test {
     useJUnitPlatform()
 }
-sourceCompatibility = JavaVersion.VERSION_15
-targetCompatibility = JavaVersion.VERSION_15
-
-task form_test(type: Test){
-    useJUnitPlatform{
+task form_test(type: Test) {
+    useJUnitPlatform {
         includeTags("CheckForm")
     }
+    sourceCompatibility = JavaVersion.VERSION_15
+    targetCompatibility = JavaVersion.VERSION_15
+
+
 }
