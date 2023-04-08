@@ -35,7 +35,8 @@ dependencies {
             "com.opencsv:opencsv:5.7.1",
             "com.google.code.gson:gson:2.10.1",
             "com.fasterxml.jackson.core:jackson-core:2.13.1",
-            "io.qameta.allure:allure-selenide:2.21.0")
+            "io.qameta.allure:allure-selenide:2.21.0",
+            "org.aspectj:aspectjweaver:1.9.19")
 }
 
 tasks.withType(JavaCompile) {
@@ -45,12 +46,25 @@ tasks.withType(JavaCompile) {
 test {
     useJUnitPlatform()
 }
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 task form_test(type: Test) {
     useJUnitPlatform {
         includeTags("CheckForm")
     }
-//    sourceCompatibility = JavaVersion.VERSION_15
-//    targetCompatibility = JavaVersion.VERSION_15
+    sourceCompatibility = JavaVersion.VERSION_15
+    targetCompatibility = JavaVersion.VERSION_15
 
 
 }
