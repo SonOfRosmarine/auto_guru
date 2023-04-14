@@ -2,12 +2,12 @@
   "base": {
     "logo": "",
     "project": "some project",
-    "environment": "qa.guru",
+    "environment": "meSpace",
     "comment": "tip-top",
-    "reportLink": "https://jenkins.autotest.cloud",
+    "reportLink": "https://jenkins.autotests.cloud",
     "language": "ru",
-    "allureFolder": "build/report/allure-report/",
-    "enableChart": false
+    "allureFolder": "allure-report/",
+    "enableChart": true
   },
   "telegram": {
     "token": "6044134059:AAH4hlG21LqBK7i0kxdBrwZrpSPALkvvXgU",
