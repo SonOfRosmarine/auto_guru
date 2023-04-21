@@ -35,7 +35,13 @@ dependencies {
             "com.opencsv:opencsv:5.7.1",
             "com.google.code.gson:gson:2.10.1",
             "com.fasterxml.jackson.core:jackson-core:2.13.1",
-            "io.qameta.allure:allure-selenide:2.21.0")
+            "io.qameta.allure:allure-selenide:2.21.0",
+            'org.seleniumhq.selenium:selenium-java:3.141.59',
+            'io.github.bonigarcia:webdrivermanager:5.2.1',
+            'org.aeonbits.owner:owner:1.0.12',
+            'org.assertj:assertj-core:3.23.1'
+    )
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
 }
 
 tasks.withType(JavaCompile) {
@@ -44,6 +50,7 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
 
 
