@@ -18,7 +18,7 @@ public class MaineTest extends BaseTest {
 
     private static final String REPOSITIRY = "SonOfRosmarine/auto_guru";
     @Test
-    @Tag("Проверка наличия записи")
+    @Tag("owner")
     public void testIssueSearchLanbda() {
         step("Открываем главную страницу", () -> {
             open("");

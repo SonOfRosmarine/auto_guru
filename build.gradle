@@ -43,30 +43,34 @@ dependencies {
     )
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
 }
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
 test {
     useJUnitPlatform()
-    systemProperties(System.getProperties())
 }
-
-test {
-    useJUnitPlatform {includeTags("Проверка наличия записи")}
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 tasks.withType(Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 }
-task form_test(type: Test) {
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
+task owner_test(type: Test) {
     useJUnitPlatform {
-        includeTags("CheckForm")
+        includeTags("owner")
     }
-    //sourceCompatibility = JavaVersion.VERSION_15
-   // targetCompatibility = JavaVersion.VERSION_15
+
+    task form_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("CheckForm")
+        }
+        //sourceCompatibility = JavaVersion.VERSION_15
+        // targetCompatibility = JavaVersion.VERSION_15
 
 
+    }
 }
