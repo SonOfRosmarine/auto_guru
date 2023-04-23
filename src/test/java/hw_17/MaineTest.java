@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import config.WebConfig;
 import io.qameta.allure.Step;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,12 +15,13 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 
 public class MaineTest extends BaseTest {
-    private static final WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
+
     private static final String REPOSITIRY = "SonOfRosmarine/auto_guru";
     @Test
+    @Tag("Проверка наличия записи")
     public void testIssueSearchLanbda() {
         step("Открываем главную страницу", () -> {
-            open(webConfig.getBaseUrl());
+            open("");
         });
         step("Осуществляем поиск репозитория" + REPOSITIRY, () -> {
             $(".header-search-input").click();

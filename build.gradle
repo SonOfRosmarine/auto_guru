@@ -53,7 +53,14 @@ test {
     systemProperties(System.getProperties())
 }
 
+test {
+    useJUnitPlatform {includeTags("Проверка наличия записи")}
+}
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
 task form_test(type: Test) {
     useJUnitPlatform {
         includeTags("CheckForm")
